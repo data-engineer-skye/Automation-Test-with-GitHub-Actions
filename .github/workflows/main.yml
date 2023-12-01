@@ -11,13 +11,25 @@ on:
   schedule:
     - cron: '0 5 * * *'
   workflow_dispatch:  
+  
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+    - name: Install python
+      uses: actions/setup-python@v4
+      with:
+          python-version: '3.10'  
+    - name: Intstall requirement
+      run: |
+          echo "Install python requirement"
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+ 
+    
+        
 
     # - name:
     #   uses: 
