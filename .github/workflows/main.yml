@@ -1,7 +1,16 @@
 name: Python Tests
 
-on: 
-
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, assigned]
+    branches:
+      - main 
+  schedule:
+    - cron: '0 5 * * *'
+  workflow_dispatch:  
 jobs:
   test:
     runs-on: ubuntu-latest
